@@ -1,5 +1,4 @@
-typedef enum
-{
+typedef enum {
     distSelf,
     distHeld,
     distHeldContained,
