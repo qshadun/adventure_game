@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include "object.h"
@@ -30,28 +31,29 @@ void executeLook(const char *noun)
 void executeGo(const char *noun)
 {
     OBJECT *obj = getVisible("where you want to go", noun);
-    if (obj == NULL)
+    switch (getDistance(player, obj))
     {
-        // already handled by getVisible
-    }
-    else if (getPassage(player->location, obj) != NULL)
-    {
+    case distOverthere:
         printf("OK.\n");
         player->location = obj;
         executeLook("around");
-    }
-    else if (obj->location != player->location)
-    {
+        break;
+    case distNotHere:
         printf("You don't see any %s here.\n", noun);
-    }
-    else if (obj->destination != NULL)
-    {
-        printf("OK.\n");
-        player->location = obj->destination;
-        executeLook("around");
-    }
-    else
-    {
-        printf("You can't get much closer than this.\n");
+        break;
+    case distUnknownObject:
+        // already handled by getVisible
+        break;
+    default:
+        if (obj->destination != NULL)
+        {
+            printf("OK.\n");
+            player->location = obj->destination;
+            executeLook("around");
+        }
+        else
+        {
+            printf("You can't get much closer than this.\n");
+        }
     }
 }

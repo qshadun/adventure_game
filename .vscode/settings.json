@@ -4,6 +4,7 @@
         "stdbool.h": "c",
         "object.h": "c",
         "misc.h": "c",
-        "move.h": "c"
+        "move.h": "c",
+        "string.h": "c"
     }
 }
