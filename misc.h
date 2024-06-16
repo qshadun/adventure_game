@@ -1,13 +1,13 @@
 typedef enum {
-    distSelf,
-    distHeld,
-    distHeldContained,
-    distLocation,
-    distHere,
-    distHereContained,
-    distOverthere,
-    distNotHere,
-    distUnknownObject
+   distSelf,
+   distHeld,
+   distHeldContained,
+   distLocation,
+   distHere,
+   distHereContained,
+   distOverthere,
+   distNotHere,
+   distUnknownObject
 } DISTANCE;
 
 extern bool isHolding(OBJECT *container, OBJECT *obj);
