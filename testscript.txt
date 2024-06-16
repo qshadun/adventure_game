@@ -1,9 +1,5 @@
-look guard
-get guard
+go entrance
 get coin
-inventory
 give coin
-look guard
-go cave
-go north
+go entrance
 quit
