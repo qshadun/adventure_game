@@ -6,33 +6,32 @@ a burly guard
 a cave entrance to the east
 dense forest all around
 
---> go west
-You can't get much closer than this.
+--> look guard
+The guard is a really big fellow.
 
---> go east
-OK.
-You are in a little cave.
-You see:
-a gold coin
-an exit to the west
-solid rock all around
+--> get guard
+That is way too heavy.
 
---> go west
-OK.
-You are in an open field.
-You see:
+--> get coin
+You pick up a silver coin.
+
+--> inventory
+You have:
 a silver coin
-a burly guard
-a cave entrance to the east
-dense forest all around
 
---> go entrance
-OK.
-You are in a little cave.
-You see:
-a gold coin
-an exit to the west
-solid rock all around
+--> give coin
+You give a silver coin to a burly guard.
+
+--> look guard
+The guard is a really big fellow.
+He has:
+a silver coin
+
+--> go cave
+The guard stops you from walking into the cave.
+
+--> go north
+Dense forest is blocking the way.
 
 --> quit
 

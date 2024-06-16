@@ -1,5 +1,9 @@
-go west
-go east
-go west
-go entrance
+look guard
+get guard
+get coin
+inventory
+give coin
+look guard
+go cave
+go north
 quit
