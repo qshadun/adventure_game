@@ -1,9 +1,28 @@
 #include <stdio.h>
 #include "object.h"
 
-OBJECT *actorHere(void) {
-    for (OBJECT *obj = objs; obj < endOfObjs; obj++) {
-        if (obj->location == player->location && obj == guard) {
+OBJECT *getPassage(OBJECT *from, OBJECT *to)
+{
+    if (from != NULL && to != NULL)
+    {
+        OBJECT *obj;
+        for (obj = objs; obj < endOfObjs; obj++)
+        {
+            if (obj->location == from && obj->destination == to)
+            {
+                return obj;
+            }
+        }
+    }
+    return NULL;
+}
+
+OBJECT *actorHere(void)
+{
+    for (OBJECT *obj = objs; obj < endOfObjs; obj++)
+    {
+        if (obj->location == player->location && obj == guard)
+        {
             return obj;
         }
     }

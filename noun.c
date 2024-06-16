@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "object.h"
+#include "misc.h"
 
 static bool objectHashTag(OBJECT *obj, const char *noun)
 {
@@ -32,9 +33,10 @@ OBJECT *getVisible(const char *intention, const char *noun)
                obj == player->location ||
                obj->location == player ||
                obj->location == player->location ||
-               obj->location == NULL ||
-               obj->location->location == player ||
-               obj->location->location == player->location))
+               getPassage(player->location, obj) != NULL ||
+               (obj->location != NULL &&
+                (obj->location->location == player ||
+                 obj->location->location == player->location))))
     {
         printf("You don't see any %s here.\n", noun);
         obj = NULL;
@@ -42,19 +44,30 @@ OBJECT *getVisible(const char *intention, const char *noun)
     return obj;
 }
 
-OBJECT *getPossession(OBJECT *from, const char *verb, const char *noun) {
+OBJECT *getPossession(OBJECT *from, const char *verb, const char *noun)
+{
     OBJECT *obj = NULL;
-    if (from == NULL) {
+    if (from == NULL)
+    {
         printf("I don't understand who you want to %s.\n", verb);
-    } else if ((obj = getObject(noun)) == NULL) {
+    }
+    else if ((obj = getObject(noun)) == NULL)
+    {
         printf("I don't understand what you want to %s.\n", verb);
-    } else if (obj == from) {
+    }
+    else if (obj == from)
+    {
         printf("You should not be doint that to %s\n", obj->description);
         obj = NULL;
-    } else if (obj->location != from) {
-        if (from == player) {
+    }
+    else if (obj->location != from)
+    {
+        if (from == player)
+        {
             printf("You are not holding any %s.\n", noun);
-        } else {
+        }
+        else
+        {
             printf("There appears to be no %s you can get from %s.\n", noun, from->description);
         }
         obj = NULL;

@@ -10,7 +10,8 @@ static bool getInput(void)
 int main()
 {
    printf("Welcome to Little Cave Adventure.\n");
-   while (parseAndExecute(input) && getInput());
+   while (parseAndExecute(input) && getInput())
+      ;
    printf("\nBye!\n");
    return 0;
 }
