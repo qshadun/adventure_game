@@ -22,6 +22,10 @@ BEGIN {
    prop["weight"]      = "99";
    prop["capacity"]    = "0";
    prop["health"]      = "0";
+   prop["open"]        = "cannotBeOpened";
+   prop["close"]       = "cannotBeClosed";
+   prop["lock"]        = "cannotBeLocked";
+   prop["unlock"]      = "cannotBeUnlocked";
 }
 
 obj && /^[ \t]+[a-z]/ {
@@ -74,7 +78,11 @@ function outputRecord(separator)
          print "\t\t" prop["textGo"] ",";
          print "\t\t" prop["weight"] ",";
          print "\t\t" prop["capacity"] ",";
-         print "\t\t" prop["health"];
+         print "\t\t" prop["health"] ",";
+         print "\t\t" prop["open"] ",";
+         print "\t\t" prop["close"] ",";
+         print "\t\t" prop["lock"] ",";
+         print "\t\t" prop["unlock"];
          print "\t}" separator;
          delete prop;
       }

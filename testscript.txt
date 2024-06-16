@@ -1,5 +1,12 @@
-go entrance
 get coin
 give coin
-go entrance
+go cave
+get key
+go south
+open door
+go south
+unlock box
+open box
+look box
+get gold
 quit

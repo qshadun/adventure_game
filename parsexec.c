@@ -3,6 +3,7 @@
 #include <string.h>
 #include "location.h"
 #include "inventory.h"
+#include "openclose.h"
 
 bool parseAndExecute(char *input)
 {
@@ -41,6 +42,22 @@ bool parseAndExecute(char *input)
       else if (strcmp(verb, "inventory") == 0)
       {
          executeInventory();
+      }
+      else if (strcmp(verb, "open") == 0)
+      {
+         executeOpen(noun);
+      }
+      else if (strcmp(verb, "close") == 0)
+      {
+         executeClose(noun);
+      }
+      else if (strcmp(verb, "lock") == 0)
+      {
+         executeLock(noun);
+      }
+      else if (strcmp(verb, "unlock") == 0)
+      {
+         executeUnlock(noun);
       }
       else
       {
