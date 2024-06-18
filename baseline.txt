@@ -46,7 +46,7 @@ You unlock a wooden box.
 --> open box
 You open a wooden box.
 
---> look box
+--> examine box
 The box is open.
 You see:
 a gold coin

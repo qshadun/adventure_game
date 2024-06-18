@@ -1,28 +1,33 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "match.h"
 #include "reach.h"
 
-void executeOpen(const char *noun)
+bool executeOpen(void)
 {
-   OBJECT *obj = reachableObject("what you want to open", noun);
+   OBJECT *obj = reachableObject("what you want to open", params[0]);
    if (obj != NULL) (*obj->open)();
+   return true;
 }
 
-void executeClose(const char *noun)
+bool executeClose(void)
 {
-   OBJECT *obj = reachableObject("what you want to close", noun);
+   OBJECT *obj = reachableObject("what you want to close", params[0]);
    if (obj != NULL) (*obj->close)();
+   return true;
 }
 
-void executeLock(const char *noun)
+bool executeLock(void)
 {
-   OBJECT *obj = reachableObject("what you want to lock", noun);
+   OBJECT *obj = reachableObject("what you want to lock", params[0]);
    if (obj != NULL) (*obj->lock)();
+   return true;
 }
 
-void executeUnlock(const char *noun)
+bool executeUnlock(void)
 {
-   OBJECT *obj = reachableObject("what you want to unlock", noun);
+   OBJECT *obj = reachableObject("what you want to unlock", params[0]);
    if (obj != NULL) (*obj->unlock)();
+   return true;
 }

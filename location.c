@@ -1,62 +1,62 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include <string.h>
 #include "object.h"
 #include "misc.h"
+#include "match.h"
 #include "noun.h"
 
-void executeLook(const char *noun)
+bool executeLookAround(void)
 {
-   if (noun != NULL && strcmp(noun, "around") == 0)
+   printf("You are in %s.\n", player->location->description);
+   listObjectsAtLocation(player->location);
+   return true;
+}
+
+bool executeLook(void)
+{
+   OBJECT *obj = getVisible("what you want to look at", params[0]);
+   switch (getDistance(player, obj))
    {
-      printf("You are in %s.\n", player->location->description);
-      listObjectsAtLocation(player->location);
+   case distHereContained:
+      printf("Hard to see, try to get it first.\n");
+      break;
+   case distOverthere:
+      printf("Too far away, move closer please.\n");
+      break;
+   case distNotHere:
+      printf("You don't see any %s here.\n", params[0]);
+      break;
+   case distUnknownObject:
+      // already handled by getVisible
+      break;
+   default:
+      printf("%s\n", obj->details);
+      listObjectsAtLocation(obj);
    }
-   else
-   {
-      OBJECT *obj = getVisible("what you want to look at", noun);
-      switch (getDistance(player, obj))
-      {
-        case distHereContained:
-            printf("Hard to see, try to get it first.\n");
-            break;
-        case distOverthere:
-            printf("Too far away, move closer please.\n");
-            break;
-        case distNotHere:
-            printf("You don't see any %s here.\n", noun);
-            break;
-        case distUnknownObject:
-            // already handled by getVisible
-            break;
-        default:
-            printf("%s\n", obj->details);
-            listObjectsAtLocation(obj);
-      }
-   }
+   return true;
 }
 
 static void movePlayer(OBJECT *passage)
 {
-    printf("%s\n", passage->textGo);
-    if (passage->destination != NULL)
-    {
-        player->location = passage->destination;
-        printf("\n");
-        executeLook("around");
-    }
+   printf("%s\n", passage->textGo);
+   if (passage->destination != NULL)
+   {
+      player->location = passage->destination;
+      printf("\n");
+      executeLookAround();
+   }
 }
 
-void executeGo(const char *noun)
+bool executeGo(void)
 {
-   OBJECT *obj = getVisible("where you want to go", noun);
+   OBJECT *obj = getVisible("where you want to go", params[0]);
    switch (getDistance(player, obj))
    {
    case distOverthere:
       movePlayer(getPassage(player->location, obj));
       break;
    case distNotHere:
-      printf("You don't see any %s here.\n", noun);
+      printf("You don't see any %s here.\n", params[0]);
       break;
    case distUnknownObject:
       // already handled by getVisible
@@ -64,4 +64,5 @@ void executeGo(const char *noun)
    default:
       movePlayer(obj);
    }
+   return true;
 }
