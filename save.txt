@@ -1,0 +1,20 @@
+get coin
+give coin
+go east
+go west
+get lamp
+turn on lamp
+go east
+get key
+open door
+go south
+open box
+unlock box
+examine box
+open box
+examin box
+examine box
+get coin from box
+look around
+go north
+go west
