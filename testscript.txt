@@ -1,5 +1,5 @@
 get coin
-give coin
+give coin to guard
 go cave
 get key
 go south
@@ -8,5 +8,8 @@ go south
 unlock box
 open box
 examine box
-get gold
+get gold from box
+inventory
+put gold in box
+examine box
 quit
