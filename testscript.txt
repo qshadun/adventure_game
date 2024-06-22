@@ -1,15 +1,13 @@
+get lamp
 get coin
-give coin to guard
+give coin
 go cave
 get key
-go south
 open door
 go south
-unlock box
-open box
-examine box
-get gold from box
-inventory
-put gold in box
-examine box
+turn lamp on
+look around
+get key
+open door
+go south
 quit

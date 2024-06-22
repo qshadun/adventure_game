@@ -5,16 +5,44 @@ a silver coin
 a burly guard
 a cave entrance to the east
 dense forest all around
+a lamp
+
+--> get lamp
+You pick up a lamp.
 
 --> get coin
 You pick up a silver coin.
 
---> give coin to guard
+--> give coin
 You give a silver coin to a burly guard.
 
 --> go cave
 You walk into the cave.
 
+It is very dark in here.
+You see:
+an exit to the west
+
+--> get key
+It's too dark.
+
+--> open door
+It's too dark.
+
+--> go south
+It's too dark.
+
+--> turn lamp on
+You turn on a lamp.
+
+You are in a little cave.
+You see:
+an exit to the west
+solid rock all around
+a closed door to the south
+a tiny key
+
+--> look around
 You are in a little cave.
 You see:
 an exit to the west
@@ -24,9 +52,6 @@ a tiny key
 
 --> get key
 You pick up a tiny key.
-
---> go south
-The door is closed.
 
 --> open door
 You open a closed door to the south.
@@ -39,33 +64,6 @@ You see:
 solid rock all around
 an open door to the north
 a wooden box
-
---> unlock box
-You unlock a wooden box.
-
---> open box
-You open a wooden box.
-
---> examine box
-The box is open.
-You see:
-a gold coin
-
---> get gold from box
-You get a gold coin from a wooden box.
-
---> inventory
-You have:
-a gold coin
-a tiny key
-
---> put gold in box
-You put a gold coin in a wooden box.
-
---> examine box
-The box is open.
-You see:
-a gold coin
 
 --> quit
 

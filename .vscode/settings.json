@@ -5,6 +5,7 @@
         "object.h": "c",
         "misc.h": "c",
         "move.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "onoff.h": "c"
     }
 }
