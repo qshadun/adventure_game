@@ -1,10 +1,10 @@
-e
-get coin
-inv
-x coin
-give coin
-e
-n
-w
-w
+talk with guard
+talk about coin
+talk with guard about forest
+talk about cave
+talk about east
+talk about yourself
+talk about guard
+talk about hamburgers
+talk
 quit

@@ -7,44 +7,32 @@ a cave entrance to the east
 dense forest all around
 a lamp
 
---> e
-The guard stops you from walking into the cave.
+--> talk with guard
+I don't understand what you want to talk about.
 
---> get coin
-You pick up a silver coin.
+--> talk about coin
+You hear a burly guard say: 'Money makes the world go round...'
 
---> inv
-You have:
-a silver coin
+--> talk with guard about forest
+You hear a burly guard say: 'You cannot go there, it is impenetrable.'
 
---> x coin
-The coin has an eagle on the obverse.
+--> talk about cave
+You hear a burly guard say: 'It's dark in there; bring a lamp!'
 
---> give coin
-You give a silver coin to a burly guard.
+--> talk about east
+You hear a burly guard say: 'It's just a compass direction.'
 
---> e
-You walk into the cave.
+--> talk about yourself
+You hear a burly guard say: 'You're not from around here, are you?'
 
-It is very dark in here.
-You see:
-an exit to the west
+--> talk about guard
+You hear a burly guard say: 'I don't want to talk about myself.'
 
---> n
-It's too dark.
+--> talk about hamburgers
+I don't understand what you want to talk about.
 
---> w
-You walk out of the cave.
-
-You are in an open field.
-You see:
-a burly guard
-a cave entrance to the east
-dense forest all around
-a lamp
-
---> w
-Dense forest is blocking the way.
+--> talk
+I don't understand what you want to talk about.
 
 --> quit
 
