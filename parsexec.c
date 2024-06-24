@@ -10,28 +10,35 @@
 #include "openclose.h"
 #include "onoff.h"
 #include "talk.h"
+#include "attack.h"
 
 typedef struct
 {
    const char *pattern;
-   bool (*function)(void);
+   int (*function)(void);
 } COMMAND;
 
-static bool executeQuit(void)
+static int executeQuit(void)
 {
-   return false;
+   return -1;
 }
 
-static bool executeNoMatch(void)
+static int executeNoMatch(void)
 {
    const char *src = *params;
    int len;
    for (len = 0; src[len] != '\0' && !isspace(src[len]); len++);
    if (len > 0) printf("I don't know how to '%.*s'.\n", len, src);
-   return true;
+   return 0;
 }
 
-bool parseAndExecute(const char *input)
+static int executeWait(void)
+{
+   printf("Some time passes...\n");
+   return 1;
+}
+
+int parseAndExecute(const char *input)
 {
    static const COMMAND commands[] =
    {
@@ -65,6 +72,10 @@ bool parseAndExecute(const char *input)
       { "talk about A with B" , executeTalkTo     },
       { "talk about A"        , executeTalk       },
       { "talk A"              , executeTalk       },
+      { "attack with B"       , executeAttack     },
+      { "attack A with B"     , executeAttack     },
+      { "attack A"            , executeAttack     },
+      { "wait"                , executeWait       },
       { "A"                   , executeNoMatch    }
    };
    const COMMAND *cmd;

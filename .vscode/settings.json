@@ -6,6 +6,8 @@
         "misc.h": "c",
         "move.h": "c",
         "string.h": "c",
-        "onoff.h": "c"
+        "onoff.h": "c",
+        "match.h": "c",
+        "reach.h": "c"
     }
 }

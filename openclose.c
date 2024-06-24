@@ -4,30 +4,30 @@
 #include "match.h"
 #include "reach.h"
 
-bool executeOpen(void)
+int executeOpen(void)
 {
    OBJECT *obj = reachableObject("what you want to open", params[0]);
    if (obj != NULL) (*obj->open)();
-   return true;
+   return obj != NULL ? 1 : 0;
 }
 
-bool executeClose(void)
+int executeClose(void)
 {
    OBJECT *obj = reachableObject("what you want to close", params[0]);
    if (obj != NULL) (*obj->close)();
-   return true;
+   return obj != NULL ? 1 : 0;
 }
 
-bool executeLock(void)
+int executeLock(void)
 {
    OBJECT *obj = reachableObject("what you want to lock", params[0]);
    if (obj != NULL) (*obj->lock)();
-   return true;
+   return obj != NULL ? 1 : 0;
 }
 
-bool executeUnlock(void)
+int executeUnlock(void)
 {
    OBJECT *obj = reachableObject("what you want to unlock", params[0]);
    if (obj != NULL) (*obj->unlock)();
-   return true;
+   return obj != NULL ? 1 : 0;
 }

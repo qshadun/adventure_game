@@ -1,8 +1,11 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "expand.h"
 #include "parsexec.h"
+#include "turn.h"
 
 static char input[100] = "look around";
 
@@ -17,7 +20,8 @@ static bool getInput(const char *filename)
 {
    static FILE *fp = NULL;
    bool ok;
-   if (fp == NULL) {
+   if (fp == NULL)
+   {
       if (filename != NULL) fp = fopen(filename, "rt");
       if (fp == NULL) fp = stdin;
    }
@@ -47,11 +51,17 @@ static bool getInput(const char *filename)
    return ok;
 }
 
+static bool processInput(char *ptr, int size)
+{
+   return turn(parseAndExecute(expand(ptr, size)));
+}
+
 int main(int argc, char *argv[])
 {
+   srand(time(NULL));
    (void)argc;
    printf("Welcome to Little Cave Adventure.\n");
-   while (parseAndExecute(expand(input, sizeof input)) && getInput(argv[1]));
+   while (processInput(input, sizeof input) && getInput(argv[1]));
    printf("\nBye!\n");
    return 0;
 }

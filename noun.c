@@ -45,7 +45,8 @@ OBJECT *getVisible(const char *intention, const char *noun)
       {
          printf("You don't see any %s here.\n", noun);
       }
-      else {
+      else
+      {
          printf("It's too dark.\n");
       }
    }
