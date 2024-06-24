@@ -1,8 +1,17 @@
 Welcome to Little Cave Adventure.
+You are in the waiting room.
+You see:
+walls all around you
+
+--> play jack
+You are Jack. Jack is a fearsome warrior.
+
+--> look around
 You are in an open field.
 You see:
 a silver coin
 a burly guard
+Jill
 a cave entrance to the east
 dense forest all around
 a lamp
@@ -12,36 +21,44 @@ a dagger
 --> get club
 You pick up a wooden club.
 
+--> play jill
+You are Jill. Jill is a vicious valkyrie.
+
+--> look around
+You are in an open field.
+You see:
+a silver coin
+a burly guard
+Jack
+a cave entrance to the east
+dense forest all around
+a lamp
+a dagger
+
+--> say Where am I?
+You say: Where am I?
+
+--> whisper to jack I need a weapon.
+You whisper to Jack: I need a weapon.
+
 --> get dagger
 You pick up a dagger.
 
---> get lamp
-You pick up a lamp.
+--> emote assume a fighting stance.
+You assume a fighting stance.
 
---> attack
+--> attack guard
 You hit a burly guard with a dagger.
 You are hit by a burly guard with bare hands.
 
---> attack with club
-You hit a burly guard with a wooden club.
+--> play jill
+You already are Jill.
 
---> drop dagger
-You drop a dagger.
-You see a burly guard pick up a dagger.
+--> play jack
+You are Jack. Jack is a fearsome warrior.
 
 --> attack guard
 You hit a burly guard with a wooden club.
-You are hit by a burly guard with a dagger.
-
---> attack with dagger
-You are not holding any dagger.
-
---> attack with lamp
-You try to hit a burly guard with a lamp, but you miss.
-
---> wait
-Some time passes...
-You are hit by a burly guard with a dagger.
 
 --> quit
 

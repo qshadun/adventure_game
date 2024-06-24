@@ -4,7 +4,6 @@
 #include "object.h"
 #include "misc.h"
 
-
 static void describeAttack(OBJECT *attacker, OBJECT *victim, OBJECT *weapon)
 {
    const char *weaponDescription = weapon == attacker ? "bare hands"

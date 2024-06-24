@@ -11,6 +11,7 @@
 #include "onoff.h"
 #include "talk.h"
 #include "attack.h"
+#include "social.h"
 
 typedef struct
 {
@@ -76,6 +77,10 @@ int parseAndExecute(const char *input)
       { "attack A with B"     , executeAttack     },
       { "attack A"            , executeAttack     },
       { "wait"                , executeWait       },
+      { "play A"              , executePlay       },
+      { "emote A"             , executeEmote      },
+      { "say A"               , executeSay        },
+      { "whisper to B A"      , executeWhisper    },
       { "A"                   , executeNoMatch    }
    };
    const COMMAND *cmd;

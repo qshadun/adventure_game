@@ -26,7 +26,7 @@ typedef struct object {
    void         (*unlock)(void);
 } OBJECT;
 
-extern OBJECT objs[];
+extern OBJECT *player, objs[];
 
 - heaven
      description "little heaven"
@@ -51,6 +51,30 @@ extern OBJECT objs[];
      location    heaven
      textGo      "In this dimension, there are no directions."
      gossip      "It's just a compass direction."
+
+- waitingRoom
+     description "the waiting room"
+     tags        "room", "waiting room"
+     details     "This is where everybody starts. Please enter: play YourName."
+     gossip      "It's where all the bad adventurers have to stay."
+     capacity    9999
+     light       100
+
+- waitingRoomWall
+     description "walls all around you"
+     tags        "wall", "east", "west", "north", "south"
+     location    waitingRoom
+     details     "Written on the wall, it says: play Jack or play Jill."
+     textGo      "You cannot go anywhere."
+
+- nobody
+     description "nobody"
+     tags        "nobody"
+     location    waitingRoom
+     details     "You are nobody. Please enter: play xxx"
+     contents    "You have"
+     health      100
+     capacity    1
 
 - field
      description "an open field"
@@ -94,13 +118,24 @@ extern OBJECT objs[];
      impact      -1
      capacity    20
 
-- player
-     description "yourself"
-     tags        "yourself"
+- jack
+     description "Jack"
+     tags        "jack", "warrior", "man"
      location    field
-     details     "You would need a mirror to look at yourself."
-     gossip      "You're not from around here, are you?"
-     contents    "You have"
+     details     "Jack is a fearsome warrior."
+     gossip      "Jack is a fearsome warrior."
+     contents    "Jack has"
+     health      100
+     impact      -1
+     capacity    20
+
+- jill
+     description "Jill"
+     tags        "jill", "valkyrie", "woman"
+     location    field
+     details     "Jill is a vicious valkyrie."
+     gossip      "Jill is a vicious valkyrie."
+     contents    "Jill has"
      health      100
      impact      -1
      capacity    20
