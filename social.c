@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "match.h"
 #include "noun.h"
 #include "reach.h"
@@ -11,20 +12,20 @@ int executePlay(void)
    OBJECT *obj = getTopic(params[0]);
    if (obj == NULL)
    {
-      printf("I don't understand what character you want to play.\n");
+      printPrivate("I don't understand what character you want to play.\n");
    }
    else if (obj == player)
    {
-      printf("You already are %s.\n", player->description);
+      printPrivate("You already are %s.\n", player->description);
    }
    else if (obj == jack || obj == jill)
    {
       player = obj;
-      printf("You are %s. %s\n", player->description, player->details);
+      printPrivate("You are %s. %s\n", player->description, player->details);
    }
    else
    {
-      printf("That is not a character you can play.\n");
+      printPrivate("That is not a character you can play.\n");
    }
    return 0;
 }
@@ -34,11 +35,11 @@ int executeEmote(void)
    const char *phrase = params[0];
    if (*phrase == '\0')
    {
-      printf("I don't understand what you want to emote.\n");
+      printPrivate("I don't understand what you want to emote.\n");
    }
    else
    {
-      printf("You %s\n", phrase);
+      printAny(player, NULL, " see ", "You %s\n", phrase);
    }
    return 0;
 }
@@ -48,11 +49,11 @@ int executeSay(void)
    const char *phrase = params[0];
    if (*phrase == '\0')
    {
-      printf("I don't understand what you want to say.\n");
+      printPrivate("I don't understand what you want to say.\n");
    }
    else
    {
-      printf("You say: %s\n", phrase);
+      printAny(player, NULL, " hear ", "You say: %s\n", phrase);
    }
    return 0;
 }
@@ -65,11 +66,14 @@ int executeWhisper(void)
       const char *phrase = params[0];
       if (*phrase == '\0')
       {
-         printf("I don't understand what you want to whisper.\n");
+         printPrivate("I don't understand what you want to whisper.\n");
       }
       else
       {
-         printf("You whisper to %s: %s\n", to->description, phrase);
+         printAny(to, NULL, NULL, "You hear %s whisper to you: %s\n",
+                  player->description, phrase);
+         printAny(player, to, " hear ", "You whisper something to %s.\n",
+                  to->description);
       }
    }
    return 0;

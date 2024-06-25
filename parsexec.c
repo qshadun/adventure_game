@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 #include "match.h"
 #include "location.h"
@@ -21,6 +22,7 @@ typedef struct
 
 static int executeQuit(void)
 {
+   printPrivate("To leave the game, press Ctrl and ], then enter quit.\n");
    return -1;
 }
 
@@ -29,13 +31,13 @@ static int executeNoMatch(void)
    const char *src = *params;
    int len;
    for (len = 0; src[len] != '\0' && !isspace(src[len]); len++);
-   if (len > 0) printf("I don't know how to '%.*s'.\n", len, src);
+   if (len > 0) printPrivate("I don't know how to '%.*s'.\n", len, src);
    return 0;
 }
 
 static int executeWait(void)
 {
-   printf("Some time passes...\n");
+   printPrivate("Some time passes...\n");
    return 1;
 }
 

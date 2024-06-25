@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "match.h"
 #include "reach.h"
 #include "toggle.h"
@@ -16,8 +17,8 @@ int executeTurnOn(void)
       }
       else
       {
-         printf(obj == lampOn ? "The lamp is already on.\n"
-                              : "You cannot turn that on.\n");
+         printPrivate(obj == lampOn ? "The lamp is already on.\n"
+                                    : "You cannot turn that on.\n");
       }
       return 1;
    }
@@ -35,8 +36,8 @@ int executeTurnOff(void)
       }
       else
       {
-         printf(obj == lampOff ? "The lamp is already off.\n"
-                               : "You cannot turn that off.\n");
+         printPrivate(obj == lampOff ? "The lamp is already off.\n"
+                                     : "You cannot turn that off.\n");
       }
       return 1;
    }

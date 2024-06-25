@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 #include "match.h"
 #include "noun.h"
@@ -11,15 +12,15 @@ static int talk(const char *about, OBJECT *to)
    OBJECT *topic = getTopic(about);
    if (topic == NULL)
    {
-      printf("I don't understand what you want to talk about.\n");
+      printPrivate("I don't understand what you want to talk about.\n");
       return 0;
    }
    else
    {
-      printf("You hear %s say: '%s'\n",
-             to->description,
-             topic == to ? "I don't want to talk about myself."
-                         : topic->gossip);
+      printPrivate("You hear %s say: '%s'\n",
+                   to->description,
+                   topic == to ? "I don't want to talk about myself."
+                               : topic->gossip);
       return 1;
    }
 }
@@ -33,7 +34,7 @@ int executeTalk(void)
    }
    else
    {
-      printf("There is nobody here to talk to.\n");
+      printPrivate("There is nobody here to talk to.\n");
       return 0;
    }
 }
@@ -49,7 +50,7 @@ int executeTalkTo(void)
       }
       else
       {
-         printf("There is no response from %s.\n", to->description);
+         printPrivate("There is no response from %s.\n", to->description);
          return 1;
       }
    }

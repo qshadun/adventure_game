@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 
 bool isHolding(OBJECT *container, OBJECT *obj)
@@ -90,10 +91,10 @@ int listObjectsAtLocation(OBJECT *location)
       {
          if (count++ == 0)
          {
-            printf("%s:\n", location == player ? "You have"
-                                               : location->contents);
+            printPrivate("%s:\n", location == player ? "You have"
+                                                     : location->contents);
          }
-         printf("%s\n", obj->description);
+         printPrivate("%s\n", obj->description);
       }
    }
    return count;

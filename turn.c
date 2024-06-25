@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 #include "location.h"
 #include "damage.h"
@@ -31,8 +32,8 @@ static void actorTakingTurn(OBJECT *actor)
       else
       {
          best->location = actor;
-         printf("You see %s pick up %s.\n",
-                actor->description, best->description);
+         printAny(actor, NULL, " see ",
+                  "You pick up %s.\n", best->description);
       }
    }
 }
@@ -42,7 +43,7 @@ static void depleteLight(OBJECT *obj, int time)
    if ((obj->light -= time) <= 0 &&
        (isHolding(player, obj) || isHolding(player->location, obj)))
    {
-      printf("You see %s go out.\n", obj->description);
+      printAny(obj, NULL, " see ", "You go out.\n");
    }
 }
 
@@ -62,7 +63,7 @@ bool turn(int time)
       }
       if (player->health <= 0)
       {
-         printf("You rise up to a more peaceful place...\n");
+         printSee("You rise up to a more peaceful place...\n");
          player->location = heaven;
          player->health = 100;
          for (obj = objs; obj < endOfObjs; obj++)

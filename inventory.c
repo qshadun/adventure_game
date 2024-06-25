@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 #include "match.h"
 #include "noun.h"
@@ -12,13 +13,13 @@ int executeGet(void)
    switch (getDistance(player, obj))
    {
    case distSelf:
-      printf("You should not be doing that to yourself.\n");
+      printPrivate("You should not be doing that to yourself.\n");
       return 1;
    case distHeld:
-      printf("You already have %s.\n", obj->description);
+      printPrivate("You already have %s.\n", obj->description);
       return 0;
    case distOverthere:
-      printf("Too far away, move closer please.\n");
+      printPrivate("Too far away, move closer please.\n");
       return 0;
    case distUnknownObject:
       // already handled by getVisible
@@ -26,7 +27,7 @@ int executeGet(void)
    default:
       if (obj->location != NULL && obj->location->health > 0)
       {
-         printf("You should ask %s nicely.\n", obj->location->description);
+         printPrivate("You should ask %s nicely.\n", obj->location->description);
          return 1;
       }
       else
@@ -55,7 +56,7 @@ int executeInventory(void)
 {
    if (listObjectsAtLocation(player) == 0)
    {
-      printf("You are empty-handed.\n");
+      printPrivate("You are empty-handed.\n");
    }
    return 1;
 }

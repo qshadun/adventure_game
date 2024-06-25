@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "match.h"
 #include "noun.h"
 #include "move.h"
@@ -13,7 +14,7 @@ int executeGetFrom(void)
    {
       if (from->health > 0)
       {
-         printf("You should ask %s nicely.\n", from->description);
+         printPrivate("You should ask %s nicely.\n", from->description);
          return 1;
       }
       else
@@ -34,7 +35,7 @@ int executePutIn(void)
       {
          if (to->health > 0)
          {
-            printf("You should offer that nicely to %s.\n", to->description);
+            printPrivate("You should offer that nicely to %s.\n", to->description);
             return 1;
          }
          else
@@ -60,7 +61,7 @@ int executeAskFrom(void)
       }
       else
       {
-         printf("There is no response from %s.\n", from->description);
+         printPrivate("There is no response from %s.\n", from->description);
          return 1;
       }
    }
@@ -81,7 +82,7 @@ int executeGiveTo(void)
          }
          else
          {
-            printf("No eagerness is shown by %s.\n", to->description);
+            printPrivate("No eagerness is shown by %s.\n", to->description);
             return 1;
          }
       }

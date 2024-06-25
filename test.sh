@@ -1,3 +1,6 @@
-#!/bin/sh
-awk -f test.awk testscript.txt | expect -f - > transcript.txt
-cmp baseline.txt transcript.txt
+#!/bin/bash
+./lilcave.testable <<<'' 1>&2 &
+MYPID=$!
+sleep 1
+nc -Cw0 localhost 18811 < "$1"
+kill $MYPID

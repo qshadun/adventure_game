@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "object.h"
+#include "print.h"
 #include "misc.h"
 #include "match.h"
 #include "noun.h"
@@ -9,11 +10,11 @@ int executeLookAround(void)
 {
    if (isLit(player->location))
    {
-      printf("You are in %s.\n", player->location->description);
+      printPrivate("You are in %s.\n", player->location->description);
    }
    else
    {
-      printf("It is very dark in here.\n");
+      printPrivate("It is very dark in here.\n");
    }
    listObjectsAtLocation(player->location);
    return 1;
@@ -25,19 +26,19 @@ int executeLook(void)
    switch (getDistance(player, obj))
    {
    case distHereContained:
-      printf("Hard to see, try to get it first.\n");
+      printPrivate("Hard to see, try to get it first.\n");
       return 0;
    case distOverthere:
-      printf("Too far away, move closer please.\n");
+      printPrivate("Too far away, move closer please.\n");
       return 0;
    case distNotHere:
-      printf("You don't see any %s here.\n", params[0]);
+      printPrivate("You don't see any %s here.\n", params[0]);
       return 0;
    case distUnknownObject:
       // already handled by getVisible
       return 0;
    default:
-      printf("%s\n", obj->details);
+      printPrivate("%s\n", obj->details);
       listObjectsAtLocation(obj);
       return 1;
    }
@@ -45,12 +46,16 @@ int executeLook(void)
 
 static void movePlayer(OBJECT *passage)
 {
-   printf("%s\n", passage->textGo);
    if (passage->destination != NULL)
    {
+      printSee("%s\n", passage->textGo);
       player->location = passage->destination;
-      printf("\n");
+      printAny(player, player, " see ", "You enter.\n");
       executeLookAround();
+   }
+   else
+   {
+      printPrivate("%s\n", passage->textGo);
    }
 }
 
@@ -63,7 +68,7 @@ int executeGo(void)
       movePlayer(getPassage(player->location, obj));
       return 1;
    case distNotHere:
-      printf("You don't see any %s here.\n", params[0]);
+      printPrivate("You don't see any %s here.\n", params[0]);
       return 0;
    case distUnknownObject:
       // already handled by getVisible
